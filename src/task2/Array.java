@@ -1,6 +1,6 @@
 package task2;
 
-import java.util.Scanner;
+
 /**
  * This class is for all array methods
  */
@@ -23,7 +23,7 @@ public class Array {
    * @return minValue int This is the smallest element
    */
   int getMinElement() {
-    if(array.length==0){
+    if (array.length == 0) {
       return 0;
     }
     int minValue = array[0];
@@ -39,8 +39,7 @@ public class Array {
    */
   int getSum() {
     int sum = 0;
-    for (int i = 0; i < array.length; i++)
-      sum += array[i];
+    for (int anArray : array) sum += anArray;
     return sum;
   }
 
@@ -69,7 +68,7 @@ public class Array {
    * Managing which array we have to sort
    */
   public void quickSort() {
-    if(array.length==0){
+    if (array.length == 0) {
       return;
     }
     sort(0, array.length - 1);
@@ -101,6 +100,7 @@ public class Array {
     }
     return i;
   }
+
   /**
    * Managing which array we have to sort
    *
