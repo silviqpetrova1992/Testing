@@ -6,17 +6,17 @@ package task3;
 public class Product {
   private String name;
   private double price;
-  private int quantity;
-  private int maxQuantity;
 
-  public Product(String name, double price, int quantity, int maxQuantity) {
+  public Product(String name, double price) {
     this.name = name;
     this.price = price;
-    this.quantity = quantity;
-    this.maxQuantity = maxQuantity;
   }
 
   public String getName() {
     return name;
+  }
+
+  public double getPrice() {
+    return price;
   }
 }
