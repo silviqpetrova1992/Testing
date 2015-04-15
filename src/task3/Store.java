@@ -1,6 +1,10 @@
 package task3;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,12 +34,42 @@ public class Store {
   }
 
   public ProductDetails add(String name, int plusQuantity) {
-    if(sellingMap.get(name).getName()==name){
+    if(sellingMap.get(name).getName()==name&&
+            (receivingMap.get(name).getQuantity()+plusQuantity<=receivingMap.get(name).getMaxQauntity())){
     receivingMap.put(name,new ProductDetails(receivingMap.get(name).getPrice(),
             receivingMap.get(name).getQuantity()+plusQuantity,
             receivingMap.get(name).getMaxQauntity()));
     return receivingMap.get(name);
     }
     return null;
+  }
+
+  public ProductDetails sell(String name, int sellingQuantity) {
+    if(sellingMap.get(name).getName()==name&&
+            (receivingMap.get(name).getQuantity()-sellingQuantity>=0)){
+      receivingMap.put(name,new ProductDetails(receivingMap.get(name).getPrice(),
+              receivingMap.get(name).getQuantity()-sellingQuantity,
+              receivingMap.get(name).getMaxQauntity()));
+      return receivingMap.get(name);
+    }
+    return null;
+
+  }
+
+  public List<Product> sort() {
+    List<Product> list=new ArrayList<Product>(sellingMap.values());
+    Collections.sort(list,new Comparator<Product>() {
+      @Override
+      public int compare(Product o1, Product o2) {
+        if(o1.getPrice()>o2.getPrice()){
+          return 1;
+        }
+        if(o1.getPrice()<o2.getPrice()){
+          return -1;
+        }
+        return 0;
+      }
+    });
+    return list;
   }
 }
