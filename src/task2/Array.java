@@ -46,9 +46,11 @@ public class Array {
   /**
    * Printing the whole array on the screen
    */
-  public int[] print() {
-/*    for (int i = 0; i < array.length; i++)
-      System.out.println("ar[" + i + "]=" + array[i]);*/
+  public int[] print(Display display) {
+    for (int i = 0; i < array.length; i++) {
+      display.print("ar[" + i + "]=" + array[i]);
+    }
+
     return array;
   }
 
